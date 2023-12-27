@@ -28,8 +28,9 @@ class Server:
         return self.__dataset
 
     def indexed_dataset(self) -> Dict[int, List]:
-
-        if self.__indexed_dataset is None:
+        """Dataset indexed by sorting position, starting at 0
+        """
+        
             dataset = self.dataset()
             truncated_dataset = dataset[:1000]
             self.__indexed_dataset = {
