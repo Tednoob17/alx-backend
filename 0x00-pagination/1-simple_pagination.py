@@ -33,6 +33,6 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Return list of rows"""
-  
-        start, end = index_range(page, page_size)
+        assert isinstance(page, int) and isinstance(page_size, int)
+       
         return self.dataset()[start:end]
