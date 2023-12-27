@@ -36,10 +36,7 @@ class Server:
             self.__indexed_dataset = {
                 i: dataset[i] for i in range(len(dataset))
             }
-        return self.__indexed_dataset
-
-    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """Return a dictionary"""
+    
         if index not in self.indexed_dataset():
             return {}
         total_pages = math.ceil(len(self.dataset()) / page_size)
