@@ -20,8 +20,10 @@ class Server:
     def __init__(self):
         self.__dataset = None
 
-  
-        if self.__dataset is None:
+    def dataset(self) -> List[List]:
+        """Cached dataset
+        """
+        
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
