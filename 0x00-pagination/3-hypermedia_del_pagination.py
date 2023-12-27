@@ -12,7 +12,7 @@ class Server:
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
-    def __init__(self):
+
         self.__dataset = None
         self.__indexed_dataset = None
 
