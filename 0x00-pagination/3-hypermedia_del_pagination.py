@@ -19,8 +19,8 @@ class Server:
     def dataset(self) -> List[List]:
         """Cached dataset
         """
-        
-            with open(self.DATA_FILE) as f:
+        if self.__dataset is None:
+           
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
             self.__dataset = dataset[1:]
