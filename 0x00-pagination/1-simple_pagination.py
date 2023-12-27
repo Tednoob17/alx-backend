@@ -4,7 +4,7 @@ Index_range to get page and page_size
 """
 import csv
 import math
-from typing import Tuple, List
+
 
 
 def index_range(page: int, page_size: int) -> Tuple:
@@ -36,4 +36,4 @@ class Server:
         assert isinstance(page, int) and isinstance(page_size, int)
         assert page > 0 and page_size > 0
         start, end = index_range(page, page_size)
-        
+        return self.dataset()[start:end]
