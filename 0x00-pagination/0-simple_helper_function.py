@@ -2,7 +2,7 @@
 """
 Index_range to get page and page_size
 """
-
+from typing import Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple:
