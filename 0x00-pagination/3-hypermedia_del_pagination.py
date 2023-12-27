@@ -14,7 +14,7 @@ class Server:
 
     def __init__(self):
         self.__dataset = None
-
+        self.__indexed_dataset = None
 
     def dataset(self) -> List[List]:
         """Cached dataset
