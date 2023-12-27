@@ -1,7 +1,5 @@
-#!/usr/bin/env python3
-"""
-Index_range to get page and page_size
-"""
+.#!/usr/bin/env python3
+
 import csv
 import math
 from typing import Tuple, List
