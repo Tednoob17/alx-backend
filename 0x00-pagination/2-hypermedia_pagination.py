@@ -12,8 +12,10 @@ def index_range(page: int, page_size: int) -> Tuple:
     return ((page - 1) * page_size, page * page_size)
 
 
-
-    DATA_FILE = "Popular_Baby_Names.csv"
+class Server:
+    """Server class to paginate a database of popular baby names.
+    """
+ 
 
     def __init__(self):
         self.__dataset = None
