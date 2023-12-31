@@ -2,4 +2,6 @@
 
 import redis from 'redis';
 
-cons
+const client = redis.createClient();
+
+module.exports = client;
