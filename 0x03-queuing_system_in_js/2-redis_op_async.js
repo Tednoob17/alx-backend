@@ -11,3 +11,18 @@ client.on('error', (error) => {
   console.log(`Redis client not connected to the server: ${error.message}`);
 });
 
+async function setNewSchool(schoolName, value) {
+  await promisify(client.set).bind(client)(schoolName, value);
+}
+
+async function displaySchoolValue(schoolName) {
+  await promisify(client.set).bind(client)(schoolName, (_, res) => {
+    console.log(res);
+  });
+}
+
+displaySchoolValue('Holberton');
+setNewSchool('HolbertonSanFrancisco', '100');
+displaySchoolValue('HolbertonSanFrancisco');
+
+module.exports = client;
