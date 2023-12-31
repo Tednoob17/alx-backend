@@ -18,6 +18,8 @@ function createPushNotificationJobs(jobs, queue) {
     pushNotificationJob.on('failed', (err) => {
       console.log(`Notification job ${pushNotificationJob.id} failed: ${err}`);
     });
+    pushNotificationJob.on('progress', (progress) => {
+      console.log(`Notification job ${pushNotificationJob.id} ${progress}% complete`);
     });
   });
 }
