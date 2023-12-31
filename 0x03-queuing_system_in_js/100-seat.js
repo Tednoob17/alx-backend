@@ -70,3 +70,8 @@ app.get('/process', async (_, res) => {
     res.json({ status: 'Queue processing' });
 });
 
+app.listen(1245, () => {
+    reserveSeat(50);
+    reservationEnabled = true;
+    console.log('API available on localhost port 1245');
+});
