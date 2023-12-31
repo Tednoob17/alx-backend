@@ -22,3 +22,35 @@ const listProducts = [
     { itemId: 4, itemName: 'Suitcase 1050', price: 550, initialAvailableQuantity: 5 }
 ];
 
+const getItemById = (id) => {
+    const item = listProducts.find((item) => item.itemId === id);
+    return item;
+};
+
+const reserveStockById = async (itemId, stock) => {
+    return promisify(client.set).bind(client)(`item.${itemId}`, stock);
+};
+
+const getCurrentReservedStockById = async (itemId) => {
+    return promisify(client.get).bind(client)(`item.${itemId}`);
+};
+
+app.get('/list_products', (req, res) => {
+    res.send(JSON.stringify(listProducts));
+});
+
+app.get('/list_products/:itemId', async (req, res) => {
+    const itemId = parseInt(req.params.itemId);
+    const item = getItemById(itemId);
+    if (!item) {
+        return res.status(404).send({ status: 'Product not found' });
+    }
+    const currentStock = await getCurrentReservedStockById(itemId);
+    item.currentQuantity = currentStock;
+    return res.send(item);
+});
+
+
+app.listen(1245, () => {
+    console.log('App running on localhost port 1245');
+});
