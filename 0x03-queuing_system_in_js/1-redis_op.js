@@ -18,8 +18,9 @@ function displaySchoolValue(schoolName) {
   });
 }
 
-displaySchoolValue('Holberton');
-setNewSchool('HolbertonSanFrancisco', '100');
-displaySchoolValue('HolbertonSanFrancisco');
+client.on('connect', () => {
+    console.log('Redis client connected to the server');
+});
+
 
 module.exports = client;
