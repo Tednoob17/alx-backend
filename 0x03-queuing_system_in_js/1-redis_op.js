@@ -22,5 +22,8 @@ client.on('connect', () => {
     console.log('Redis client connected to the server');
 });
 
+displaySchoolValue('Holberton');
+setNewSchool('HolbertonSanFrancisco', '100');
+displaySchoolValue('HolbertonSanFrancisco');
 
 module.exports = client;
