@@ -50,6 +50,19 @@ app.get('/list_products/:itemId', async (req, res) => {
     return res.send(item);
 });
 
+app.get('/reserve_product/:itemId', async (req, res) => {
+    const itemId = parseInt(req.params.itemId);
+    const item = getItemById(itemId);
+    if (!item) {
+        return res.status(404).send({ status: 'Product not found' });
+    }
+    const currentStock = await getCurrentReservedStockById(itemId);
+    if (currentStock <= 0) {
+        return res.status(403).send({ status: 'Not enough stock available', itemId });
+    }
+    await reserveStockById(itemId, parseInt(currentStock) - 1);
+    return res.send({ status: 'Reservation confirmed', itemId });
+});
 
 app.listen(1245, () => {
     console.log('App running on localhost port 1245');
