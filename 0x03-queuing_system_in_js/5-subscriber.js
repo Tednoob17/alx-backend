@@ -18,6 +18,10 @@ client.on('message', (channel, message) => {
     console.log(message);
   }
 
+  if (message === 'KILL_SERVER') {
+    client.unsubscribe();
+    client.quit();
+  }
 });
 
 module.exports = client;
