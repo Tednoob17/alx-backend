@@ -55,13 +55,6 @@ jobs.forEach((job) => {
     if (!err) console.log(`Notification job created: ${pushNotificationJob.id}`);
   });
 
-  pushNotificationJob.on('complete', () => {
-    console.log(`Notification job ${pushNotificationJob.id} completed`);
-  });
-
-  pushNotificationJob.on('failed', (errorMessage) => {
-    console.log(`Notification job ${pushNotificationJob.id} failed: ${errorMessage}`);
-  });
 
   pushNotificationJob.on('progress', (progress) => {
     console.log(`Notification job ${pushNotificationJob.id} ${progress}% complete`);
