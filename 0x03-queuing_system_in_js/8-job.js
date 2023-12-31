@@ -12,8 +12,12 @@ function createPushNotificationJobs(jobs, queue) {
       if (!err) console.log(`Notification job created: ${pushNotificationJob.id}`);
     });
 
-    pushNotificationJob.on('progress', (progress) => {
-      console.log(`Notification job ${pushNotificationJob.id} ${progress}% complete`);
+    pushNotificationJob.on('complete', () => {
+      console.log(`Notification job ${pushNotificationJob.id} completed`);
+    });
+    pushNotificationJob.on('failed', (err) => {
+      console.log(`Notification job ${pushNotificationJob.id} failed: ${err}`);
+    });
     });
   });
 }
