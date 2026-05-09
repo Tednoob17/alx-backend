@@ -40,10 +40,7 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """Return a dictionary"""
-        if index not in self.indexed_dataset():
-            return {}
-        total_pages = math.ceil(len(self.dataset()) / page_size)
-        data = []
+        
         next_index = index
         while len(data) < page_size and next_index in self.indexed_dataset():
             data.append(self.indexed_dataset()[next_index])
